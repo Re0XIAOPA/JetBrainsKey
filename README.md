@@ -2,7 +2,7 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/yourusername/jetbrakey?style=for-the-badge)](https://github.com/Re0XIAOPA/jetbrakey)    [![Open Issues](https://img.shields.io/github/issues/yourusername/jetbrakey?style=for-the-badge)](https://github.com/Re0XIAOPA/jetbrakey/issues)
 
-## 🚀 快速开始
+## 快速开始
 
 ### 克隆仓库
 
@@ -10,7 +10,7 @@
 git clone https://github.com/Re0XIAOPA/jetbrakey.git
 ```
 
-## ⚙️ 配置指南
+## 配置指南
 
 ### 核心配置文件
 
@@ -37,7 +37,7 @@ const CONFIG = {
 };
 ```
 
-## 🧩 模块示例
+## 模块示例
 
 ### 模块示例配置
 
@@ -68,14 +68,18 @@ const CONFIG = {
 }
 ```
 
-## 🤝 贡献流程
+## 贡献流程
 
 | 贡献仓库  
 | 请提交一个 [Pulls](https://github.com/Re0XIAOPA/ToolStore/pulls)  
 | 或者克隆仓库完成之后同步分支  
-| 资源收集于互联网：[更过点击查看](https://3.jetbra.in/)  
+| 资源收集于互联网，更多点击查看：  
+[https://3.jetbra.in/](https://3.jetbra.in/)  
+[https://ckey.run/](https://ckey.run/)  
+[https://jb.1157pt.top/](https://jb.1157pt.top/)  
 
-## 📂 项目结构
+
+## 项目结构
 
 ```markdown
 jetbrakey/
