@@ -198,11 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // 设置卡片HTML
             const isValid = isKeyValid(currentKey);
             card.innerHTML = `
-                <div class="card-header">
-                    <div class="card-icon-container">
-                        <img src="${software.icon}" alt="${software.name}" class="card-icon" draggable="false">
-                        <div class="card-title" title="${software.name}">${software.name}</div>
-                    </div>
+                <div class="card-top-section">
                     <div class="version-selector">
                         <div class="version-display">${defaultVersion}</div>
                         <div class="version-options">
@@ -210,11 +206,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     </div>
                 </div>
-                <div class="key-display">
-                    ${!isValid
-                    ? `<div class="no-key">${CONFIG.text[currentLanguage].noKey}</div>`
-                    : `${'*'.repeat(32)}<br>${'*'.repeat(32)}<br>${'*'.repeat(32)}`}
-                    ${isValid ? `<div class="copy-key">${CONFIG.text[currentLanguage].copyKey}</div>` : ''}
+                <div class="card-body-section">
+                    <div class="card-icon-wrapper">
+                        <img src="${software.icon}" alt="${software.name}" class="card-icon" draggable="false">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title" title="${software.name}">${software.name}</div>
+                        <div class="key-display">
+                            ${!isValid
+                            ? `<div class="no-key">${CONFIG.text[currentLanguage].noKey}</div>`
+                            : `${'*'.repeat(35)}<br>${'*'.repeat(35)}<br>${'*'.repeat(35)}`}
+                            ${isValid ? `<div class="copy-key">${CONFIG.text[currentLanguage].copyKey}</div>` : ''}
+                        </div>
+                    </div>
                 </div>
             `;
 
@@ -285,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     keyDisplay.innerHTML = `
                         ${!isValid
                             ? `<div class="no-key">${CONFIG.text[currentLanguage].noKey}</div>`
-                            : `${'*'.repeat(32)}<br>${'*'.repeat(32)}<br>${'*'.repeat(32)}`}
+                            : `${'*'.repeat(35)}<br>${'*'.repeat(35)}<br>${'*'.repeat(35)}`}
                         ${isValid ? `<div class="copy-key">${CONFIG.text[currentLanguage].copyKey}</div>` : ''}
                     `;
 

@@ -1,28 +1,35 @@
 /* 基础样式 */
 :root {
-    --primary-color: #4a86e8;
-    --secondary-color: #6aa84f;
-    --background-color: #ffffff;
-    --card-background: #f9f9f9;
-    --text-color: #333333;
-    --border-color: #dddddd;
-    --navbar-bg: #333333;
-    --navbar-text: #ffffff;
-    --button-bg: #4a86e8;
+    --primary-color: #666666;
+    --secondary-color: #333333;
+    --background-color: #f5f5f7;
+    --card-background: #ffffff;
+    --text-color: #1d1d1f;
+    --border-color: #d2d2d7;
+    --navbar-bg: #ffffff;
+    --navbar-text: #1d1d1f;
+    --button-bg: #666666;
     --button-text: #ffffff;
-    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --navbar-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --navbar-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    --banner-bg: #ffffff;
+    --banner-text: #1d1d1f;
 }
 
 /* 暗色主题 */
 .dark-theme {
+    --primary-color: #888888;
+    --secondary-color: #bbbbbb;
     --background-color: #000000;
-    --card-background: #27272c;
-    --text-color: #f0f0f0;
-    --border-color: #1F2226;
-    --navbar-bg: #121212;
-    --button-bg: #2a5db0;
-    --navbar-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    --card-background: #1c1c1e;
+    --text-color: #f5f5f7;
+    --border-color: #2c2c2e;
+    --navbar-bg: #1c1c1e;
+    --navbar-text: #f5f5f7;
+    --button-bg: #444444;
+    --navbar-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    --banner-bg: #1c1c1e;
+    --banner-text: #d9d9d9;
 }
 
 * {
@@ -88,9 +95,13 @@ body {
 }
 
 .category-btn.active {
-    background-color: var(--primary-color);
-    color: white;
-    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
+}
+
+.dark-theme .category-btn.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
 }
 
 /* 浮动控制按钮 */
@@ -108,15 +119,15 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--card-background);
+    color: var(--text-color);
     border: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1px var(--text-color);
     transition: transform 0.2s, background-color 0.3s;
 }
 
@@ -164,96 +175,113 @@ body {
     width: calc(25% - 15px);
     min-width: 250px;
     max-width: 300px;
-    padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 0; /* 移除默认内边距，由内部容器控制 */
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     flex-grow: 0;
+    overflow: hidden; /* 确保圆角 */
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-.card-header {
+/* 卡片顶部区域（版本号） */
+.card-top-section {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 浅色分割线 */
     display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-bottom: 15px;
-    width: 100%;
-    gap: 10px;
+    justify-content: flex-end; /* 版本号靠右 */
+    height: 60px; /* 固定高度 */
+    background-color: rgba(0, 0, 0, 0.02); /* 极淡的背景色区分顶部 */
 }
 
-.card-icon-container {
+.dark-theme .card-top-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* 卡片主体区域 */
+.card-body-section {
+    padding: 20px;
+    position: relative;
+}
+
+/* 图标容器 - 悬浮在分割线上 */
+.card-icon-wrapper {
+    position: absolute;
+    top: -40px; /* 向上偏移以重叠分割线 */
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--card-background); /* 背景色遮挡线条 */
+    border-radius: 12px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 200px;
+    justify-content: center;
+    /* 可选：添加阴影让图标更立体 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .card-icon {
-    width: 80px;
-    height: 80px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
-    margin-bottom: 10px;
     user-select: none;
-    /* 禁止选择 */
     -webkit-user-drag: none;
-    /* 禁止拖拽 */
+}
+
+/* 卡片信息区域 */
+.card-info {
+    margin-top: 30px; /* 为图标留出空间 */
 }
 
 .card-title {
     font-size: 1.8rem !important;
     font-weight: bold;
-    text-align: center;
-    margin-top: 5px;
+    text-align: left; /* 左对齐 */
+    margin-bottom: 15px;
     white-space: nowrap;
-    /* 防止文本换行 */
     overflow: hidden;
-    /* 隐藏超出部分 */
     text-overflow: ellipsis;
-    /* 显示省略号 */
     width: 100%;
-    /* 确保宽度为100% */
-    max-width: 200px;
-    /* 限制最大宽度 */
+    padding: 0 5px;
 }
 
 /* 版本选择器样式 */
 .version-selector {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
-    max-width: 100%;
-    z-index: 1;
-    -webkit-user-drag: none;
-    user-drag: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    position: relative;
+    z-index: 10;
 }
 
 .version-display {
     font-size: 0.9rem !important;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    background-color: transparent; /* 默认透明背景 */
+    color: #888; /* 默认灰色 */
+    padding: 8px 14px;
+    border-radius: 20px; /* 胶囊形状 */
     font-weight: bold;
     cursor: pointer;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align: right;
+    border: 1px solid transparent; /* 默认透明边框 */
+    transition: all 0.3s;
+}
+
+/* 鼠标悬停在卡片上时显示版本号边框 - 仅悬停在版本号上显示 */
+.version-display:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.dark-theme .version-display {
+    color: #888;
+}
+
+.dark-theme .version-display:hover {
+    color: var(--primary-color); /* 使用主题色 */
 }
 
 .version-options {
@@ -262,33 +290,26 @@ body {
     right: 0;
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-    min-width: 100%;
-    /* 继承按钮宽度 */
-    width: auto;
-    max-width: 200px;
+    border-radius: 8px;
+    min-width: 120px;
     display: none;
-    z-index: 10;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-height: 200px;
-    overflow-y: auto;
-    white-space: nowrap;
-    /* 防止选项换行 */
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    overflow: hidden;
 }
 
 .version-option {
-    padding: 5px 10px;
+    padding: 8px 15px;
     cursor: pointer;
-    text-align: right;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    /* 限制最大宽度 */
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--text-color);
 }
 
 .version-option:hover {
     background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
 }
 
 .dark-theme .version-option:hover {
@@ -297,30 +318,22 @@ body {
 
 /* 密钥显示样式 */
 .key-display {
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 15px;
-    text-align: center;
+    background-color: transparent; /* 移除背景色 */
+    padding: 0; /* 移除内边距 */
+    margin-top: 10px;
+    text-align: center; /* 居中对齐，配合圆角更协调 */
     position: relative;
     cursor: pointer;
     color: #aaaaaa;
-    /* 浅灰色星号 */
-    line-height: 1.2;
-    /* 增加行高，使多行星号更易读 */
-    -webkit-user-drag: none;
-    user-drag: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    line-height: 1.6;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
 /* 暗色主题下的密钥颜色 */
 .dark-theme .key-display {
     color: #666666;
-    /* 暗色主题下使用稍深的灰色 */
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: transparent;
 }
 
 .copy-key {
@@ -329,19 +342,29 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: #e6e6e6;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
+    border-radius: 25px;
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity 0.4s;
+    font-size: 16px;
+    backdrop-filter: blur(2px);
+}
+
+.dark-theme .copy-key {
+    color: white;
+    background-color: #29292b;
 }
 
 .key-display:hover .copy-key {
     opacity: 1;
 }
+
+/* 移除旧的样式代码，防止冲突 */
+/* .card-header, .card-icon-container, .card-title (旧定义) 等将被覆盖或不再匹配 HTML 结构 */
 
 /* 底部下载提示 */
 .download-banner {
@@ -351,41 +374,37 @@ body {
     transform: translateX(-50%);
     width: auto;
     max-width: 80%;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--banner-bg);
+    color: var(--banner-text);
     text-align: center;
     padding: 12px 20px;
     z-index: 900;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
 }
 
 /* 下载链接样式 */
 .download-banner a {
-    color: #ffeb3b;
-    /* 明亮的黄色 */
+    color: #0f7cf9;
     font-weight: bold;
     text-decoration: underline;
     transition: color 0.2s;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    /* 添加轻微文字阴影增强可读性 */
 }
 
 .download-banner a:hover {
-    color: #eacf00;
-    /* 鼠标悬停时的浅黄色 */
+    color: #59b0fb;
 }
 
 /* 暗色主题下的下载链接 */
 .dark-theme .download-banner a {
-    color: #ffeb3b;
-    /* 暗色主题下使用亮绿色 */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: #58a6ff;
+    text-shadow: none;
 }
 
 .dark-theme .download-banner a:hover {
-    color: #eacf00;
-    /* 暗色主题下鼠标悬停时的浅绿色 */
+    color: #79c0ff;
 }
 
 /* 页脚样式 */
@@ -418,11 +437,14 @@ body {
     margin: 0;
     font-size: 1.1em;
     color: #888;
+    background-color: #f0f0f5;
+    border-radius: 25px;
 }
 
 /* 暗色主题适配 */
 .dark-theme .no-key {
-    color: #666;
+    color: #aaa;
+    background-color: #333;
 }
 
 /* 页脚样式 */
