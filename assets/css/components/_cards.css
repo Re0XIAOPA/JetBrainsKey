@@ -1,0 +1,159 @@
+/* 卡片容器样式 */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 130px 20px 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* 卡片样式 */
+.card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    width: calc(25% - 15px);
+    min-width: 250px;
+    max-width: 300px;
+    padding: 0; /* 移除默认内边距，由内部容器控制 */
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    overflow: hidden; /* 确保圆角 */
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* 卡片顶部区域（版本号） */
+.card-top-section {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 浅色分割线 */
+    display: flex;
+    justify-content: flex-end; /* 版本号靠右 */
+    height: 60px; /* 固定高度 */
+    background-color: rgba(0, 0, 0, 0.02); /* 极淡的背景色区分顶部 */
+}
+
+.dark-theme .card-top-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* 卡片主体区域 */
+.card-body-section {
+    padding: 20px;
+    position: relative;
+}
+
+/* 图标容器 - 悬浮在分割线上 */
+.card-icon-wrapper {
+    position: absolute;
+    top: -40px; /* 向上偏移以重叠分割线 */
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--card-background); /* 背景色遮挡线条 */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 可选：添加阴影让图标更立体 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* 卡片信息区域 */
+.card-info {
+    margin-top: 30px; /* 为图标留出空间 */
+}
+
+.card-title {
+    font-size: 1.8rem !important;
+    font-weight: bold;
+    text-align: left; /* 左对齐 */
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0 5px;
+}
+
+/* 版本选择器样式 */
+.version-selector {
+    position: relative;
+    z-index: 10;
+}
+
+.version-display {
+    font-size: 0.9rem !important;
+    background-color: transparent; /* 默认透明背景 */
+    color: #888; /* 默认灰色 */
+    padding: 8px 14px;
+    border-radius: 20px; /* 胶囊形状 */
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid transparent; /* 默认透明边框 */
+    transition: all 0.3s;
+}
+
+/* 鼠标悬停在卡片上时显示版本号边框 - 仅悬停在版本号上显示 */
+.version-display:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.dark-theme .version-display {
+    color: #888;
+}
+
+.dark-theme .version-display:hover {
+    color: var(--primary-color); /* 使用主题色 */
+}
+
+.version-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    min-width: 120px;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.version-option {
+    padding: 8px 15px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.version-option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+.dark-theme .version-option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

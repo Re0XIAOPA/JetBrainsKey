@@ -1,0 +1,51 @@
+/* 浮动控制按钮 */
+.floating-controls {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.floating-controls button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 1px var(--text-color);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.floating-controls button:hover {
+    transform: scale(1.1);
+}
+
+.navbar-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-controls button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 1rem;
+}
+
+.navbar-controls button:hover {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+}

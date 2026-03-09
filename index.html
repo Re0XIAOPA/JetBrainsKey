@@ -7,29 +7,20 @@
     <title>Jetbrakey</title>
 
     <!-- 预加载脚本，防止暗黑模式闪烁 -->
-    <script>
-        // 检查本地存储中的主题设置
-        const savedTheme = localStorage.getItem('theme');
-        // 检查系统主题偏好
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        // 如果有保存的主题设置，使用保存的设置；否则，根据系统主题偏好设置
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.documentElement.classList.add('dark-theme');
-        }
-    </script>
+    <script src="assets\js\components\theme-preloader.js"></script>
 
     <!-- 网站图标 -->
-    <link rel="icon" type="image/png" href="assets/image/Jetbrakey32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="assets/image/Jetbrakey64.png" sizes="64x64" />
-    <link rel="icon" type="image/png" href="assets/image/Jetbrakey128.png" sizes="128x128" />
-    <link rel="icon" type="image/png" href="assets/image/Jetbrakey256.png" sizes="256x256" />
-    <link rel="shortcut icon" href="assets/image/Jetbrakey32.png" />
-    <link rel="apple-touch-icon" sizes="128x128" href="assets/image/Jetbrakey128.png" />
+    <link rel="icon" type="image/svg+xml" href="assets/image/icons/Jetbrains-academy.svg" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="assets/image/icons/Jetbrains-academy.svg" sizes="64x64" />
+    <link rel="icon" type="image/svg+xml" href="assets/image/icons/Jetbrains-academy.svg" sizes="128x128" />
+    <link rel="icon" type="image/svg+xml" href="assets/image/icons/Jetbrains-academy.svg" sizes="256x256" />
+    <link rel="shortcut icon" href="assets/image/icons/Jetbrains-academy.svg" />
+    <link rel="apple-touch-icon" sizes="128x128" href="assets/image/icons/Jetbrains-academy.svg" />
 
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
 </head>
 
 <body>
@@ -72,7 +63,6 @@
     </footer>
 
     <!-- 引入脚本 -->
-    <script type="module" src="assets/js/config.js"></script>
     <script type="module" src="assets/js/main.js"></script>
 </body>
 

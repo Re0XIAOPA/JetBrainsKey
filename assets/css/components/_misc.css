@@ -1,0 +1,127 @@
+/* 密钥显示样式 */
+.key-display {
+    background-color: transparent; /* 移除背景色 */
+    padding: 0; /* 移除内边距 */
+    margin-top: 10px;
+    text-align: center; /* 居中对齐，配合圆角更协调 */
+    position: relative;
+    cursor: pointer;
+    color: #aaaaaa;
+    line-height: 1.6;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* 暗色主题下的密钥颜色 */
+.dark-theme .key-display {
+    color: #666666;
+    background-color: transparent;
+}
+
+.copy-key {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e6e6e6;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    opacity: 0;
+    transition: opacity 0.4s;
+    font-size: 16px;
+    backdrop-filter: blur(2px);
+}
+
+.dark-theme .copy-key {
+    color: white;
+    background-color: #29292b;
+}
+
+.key-display:hover .copy-key {
+    opacity: 1;
+}
+
+/* 底部下载提示 */
+.download-banner {
+    position: fixed;
+    bottom: 63px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 80%;
+    background-color: var(--banner-bg);
+    color: var(--banner-text);
+    text-align: center;
+    padding: 12px 20px;
+    z-index: 900;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+/* 下载链接样式 */
+.download-banner a {
+    color: #0f7cf9;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.download-banner a:hover {
+    color: #59b0fb;
+}
+
+/* 暗色主题下的下载链接 */
+.dark-theme .download-banner a {
+    color: #58a6ff;
+    text-shadow: none;
+}
+
+.dark-theme .download-banner a:hover {
+    color: #79c0ff;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    width: 100%;
+    z-index: 800;
+    margin-top: 20px;
+}
+
+.disclaimer {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 无密钥提示样式 */
+.no-key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    /* 保持原有密钥区域高度 */
+    margin: 0;
+    font-size: 1.1em;
+    color: #888;
+    background-color: #f0f0f5;
+    border-radius: 25px;
+}
+
+/* 暗色主题适配 */
+.dark-theme .no-key {
+    color: #aaa;
+    background-color: #333;
+}
