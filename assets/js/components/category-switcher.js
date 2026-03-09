@@ -46,6 +46,11 @@ export class CategorySwitcher {
         this.updateDownloadInfo(category);
     }
 
+    // 获取当前分类
+    getCurrentCategory() {
+        return this.currentCategory;
+    }
+
     // 更新下载提示栏内容
     updateDownloadInfo(category) {
         // 只更新底部提示栏，不更新导航栏提示

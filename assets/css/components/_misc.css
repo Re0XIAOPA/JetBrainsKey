@@ -10,6 +10,16 @@
     line-height: 1.6;
     font-size: 0.8rem;
     letter-spacing: 1px;
+    /* 核心属性：禁止文本选中 */
+    user-select: none;
+    /* 兼容不同浏览器前缀 */
+    -webkit-user-select: none; /* Safari、Chrome 等 Webkit 内核 */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    /* 可选：禁用鼠标样式（增强视觉提示） */
+    /* cursor: default; */
+    /* 可选：防止双击选中（部分场景补充） */
+    -webkit-touch-callout: none; /* 移动端 Safari 禁止长按菜单 */
 }
 
 /* 暗色主题下的密钥颜色 */

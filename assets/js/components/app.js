@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
     cardRenderer.init();
     categorySwitcher.init();
     themeManager.init();
+    
+    // 设置分类切换器引用
+    languageManager.setCategorySwitcher(categorySwitcher);
 
     // 初始化页面
     languageManager.updateLanguageText();

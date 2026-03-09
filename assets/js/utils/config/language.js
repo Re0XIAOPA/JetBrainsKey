@@ -3,7 +3,7 @@
  */
 
 const languageConfig = {
-    defaultLanguage: 'zh', // 默认语言：中文
+    defaultLanguage: 'en', // 默认语言：中文
     availableLanguages: ['zh', 'en'] // 可用语言
 };
 

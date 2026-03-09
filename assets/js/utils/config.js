@@ -32,7 +32,7 @@ const CONFIG = {
             languageToggle: "切换语言",
             themeToggle: "切换主题",
             copyKey: "复制密钥",
-            copySuccess: "复制成功",
+            copySuccess: "复制成功！",
             noKey: "暂无密钥",
             version: "版本",
             downloadInfo: {
@@ -51,7 +51,7 @@ const CONFIG = {
             languageToggle: "Toggle Language",
             themeToggle: "Toggle Theme",
             copyKey: "Copy License",
-            copySuccess: "Copied",
+            copySuccess: "Copied!",
             noKey: "No Key Available",
             version: "Version",
             downloadInfo: {
