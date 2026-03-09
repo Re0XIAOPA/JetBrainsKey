@@ -1,5 +1,5 @@
-const jetbra2099Config = {
-    jetbra2099: [
+const jetbrains2099Config = {
+    jetbrains2099: [
         {
             name: "IntelliJ IDEA",
             icon: "https://resources.jetbrains.com.cn/storage/products/company/brand/logos/IntelliJ_IDEA_icon.png",
@@ -166,4 +166,4 @@ const jetbra2099Config = {
     ],
 }
 
-export { jetbra2099Config };
+export { jetbrains2099Config };

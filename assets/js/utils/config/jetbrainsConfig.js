@@ -2,8 +2,8 @@
  * 软件数据配置模块
  */
 
-const jetbraConfig = {
-    jetbra: [
+const jetbrainsConfig = {
+    jetbrains: [
         {
             name: "IntelliJ IDEA",
             icon: "https://resources.jetbrains.com.cn/storage/products/company/brand/logos/IntelliJ_IDEA_icon.png",
@@ -143,4 +143,4 @@ const jetbraConfig = {
     ]
 }
 
-export { jetbraConfig };
+export { jetbrainsConfig };

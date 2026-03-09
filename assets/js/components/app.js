@@ -22,6 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 初始化页面
     languageManager.updateLanguageText();
-    cardRenderer.renderCards('jetbra');
-    categorySwitcher.updateDownloadInfo('jetbra');
+    cardRenderer.renderCards('jetbrains');
+    categorySwitcher.updateDownloadInfo('jetbrains');
 });

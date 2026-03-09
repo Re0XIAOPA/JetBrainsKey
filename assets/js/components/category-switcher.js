@@ -6,7 +6,7 @@ import { CONFIG } from '../utils/config.js';
 
 export class CategorySwitcher {
     constructor(languageManager, cardRenderer) {
-        this.currentCategory = 'jetbra';
+        this.currentCategory = 'jetbrains';
         this.languageManager = languageManager;
         this.cardRenderer = cardRenderer;
         this.categoryButtons = null;
@@ -55,7 +55,7 @@ export class CategorySwitcher {
         const currentLanguage = this.languageManager.getCurrentLanguage();
         // 获取当前分类的下载提示
         const infoText = CONFIG.text[currentLanguage].downloadInfo[category] ||
-            CONFIG.text[currentLanguage].downloadInfo.jetbra; // 默认使用jetbra的提示
+            CONFIG.text[currentLanguage].downloadInfo.jetbrains; // 默认使用jetbrains的提示
 
         // 更新底部提示栏内容
         downloadBannerElement.innerHTML = infoText;
