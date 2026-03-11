@@ -21,20 +21,19 @@ export class ThemeManager {
     // 检测系统主题偏好并应用
     detectAndApplySystemTheme() {
         // 检查本地存储中的主题设置
-        const savedTheme = localStorage.getItem('theme');
+        const savedTheme = localStorage.getItem('theme') || CONFIG.settings.defaultTheme;
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
         // 如果有保存的主题设置，使用保存的设置
-        if (savedTheme) {
-            if (savedTheme === 'dark') {
-                document.documentElement.classList.add('dark-theme');
-                this.isDarkTheme = true;
-            } else {
-                document.documentElement.classList.remove('dark-theme');
-                this.isDarkTheme = false;
-            }
-        } else {
-            // 否则，根据系统主题偏好设置
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+            this.isDarkTheme = true;
+        } else if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark-theme');
+            this.isDarkTheme = false;
+        } else if (savedTheme === 'auto') {
+            // 自动模式下根据系统主题设置
+            if (prefersDark) {
                 document.documentElement.classList.add('dark-theme');
                 this.isDarkTheme = true;
             } else {
@@ -53,16 +52,19 @@ export class ThemeManager {
 
             // 添加变化监听器
             mediaQuery.addEventListener('change', (e) => {
-                if (e.matches) {
-                    // 切换到深色模式
-                    document.documentElement.classList.add('dark-theme');
-                    this.isDarkTheme = true;
-                } else {
-                    // 切换到浅色模式
-                    document.documentElement.classList.remove('dark-theme');
-                    this.isDarkTheme = false;
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'auto') {
+                    if (e.matches) {
+                        // 切换到深色模式
+                        document.documentElement.classList.add('dark-theme');
+                        this.isDarkTheme = true;
+                    } else {
+                        // 切换到浅色模式
+                        document.documentElement.classList.remove('dark-theme');
+                        this.isDarkTheme = false;
+                    }
+                    this.updateToggleIcon();
                 }
-                this.updateToggleIcon();
             });
         }
     }
@@ -71,9 +73,18 @@ export class ThemeManager {
     updateToggleIcon() {
         if (!this.themeToggle) return;
 
+        const savedTheme = localStorage.getItem('theme') || CONFIG.settings.defaultTheme;
         const themeIcon = this.themeToggle.querySelector('i');
-        themeIcon.classList.remove(this.isDarkTheme ? 'fa-moon' : 'fa-sun');
-        themeIcon.classList.add(this.isDarkTheme ? 'fa-sun' : 'fa-moon');
+        
+        // 移除所有可能的图标类
+        themeIcon.classList.remove('fa-moon', 'fa-sun', 'fa-adjust');
+        
+        // 根据当前主题或模式设置图标
+        if (savedTheme === 'auto') {
+            themeIcon.classList.add('fa-adjust');
+        } else {
+            themeIcon.classList.add(this.isDarkTheme ? 'fa-sun' : 'fa-moon');
+        }
     }
 
     // 绑定事件
@@ -84,12 +95,32 @@ export class ThemeManager {
             if (this.themeDebounce) return;
             this.themeDebounce = true;
 
-            // 切换主题
-            this.isDarkTheme = !this.isDarkTheme;
-            document.documentElement.classList.toggle('dark-theme');
-
-            // 同步保存到本地存储
-            localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
+            // 获取当前主题设置
+            const savedTheme = localStorage.getItem('theme') || CONFIG.settings.defaultTheme;
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // 循环切换主题模式：auto -> light -> dark
+            if (savedTheme === 'auto' || !savedTheme) {
+                // 从自动切换到浅色
+                document.documentElement.classList.remove('dark-theme');
+                this.isDarkTheme = false;
+                localStorage.setItem('theme', 'light');
+            } else if (savedTheme === 'light') {
+                // 从浅色切换到深色
+                document.documentElement.classList.add('dark-theme');
+                this.isDarkTheme = true;
+                localStorage.setItem('theme', 'dark');
+            } else if (savedTheme === 'dark') {
+                // 从深色切换到自动
+                if (prefersDark) {
+                    document.documentElement.classList.add('dark-theme');
+                    this.isDarkTheme = true;
+                } else {
+                    document.documentElement.classList.remove('dark-theme');
+                    this.isDarkTheme = false;
+                }
+                localStorage.setItem('theme', 'auto');
+            }
 
             // 强制更新图标状态
             this.updateToggleIcon();

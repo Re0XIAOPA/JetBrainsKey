@@ -12,6 +12,7 @@ const CONFIG = {
     // 应用设置
     settings: {
         ...languageConfig,
+        defaultTheme: 'auto', // 主题默认设置：auto, light, dark
     },
 
     // 软件数据

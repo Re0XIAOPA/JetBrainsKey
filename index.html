@@ -7,7 +7,30 @@
     <title>JetBrainsKey</title>
 
     <!-- 预加载脚本，防止暗黑模式闪烁 -->
-    <script src="/assets/js/components/theme-preloader.js"></script>
+    <!-- <script src="/assets/js/components/theme-preloader.js"></script> -->
+    <script>
+        // 内联预加载脚本，确保优先执行
+        const savedTheme = localStorage.getItem('theme') || 'auto';
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        function applyTheme() {
+            if (savedTheme === 'dark' || (savedTheme === 'auto' && prefersDark)) {
+                document.documentElement.classList.add('dark-theme');
+            } else if (savedTheme === 'light' || (savedTheme === 'auto' && !prefersDark)) {
+                document.documentElement.classList.remove('dark-theme');
+            }
+        }
+
+        applyTheme();
+
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (savedTheme === 'auto') {
+                    applyTheme();
+                }
+            });
+        }
+    </script>
 
     <!-- 网站图标 -->
     <link rel="icon" type="image/svg+xml" href="/assets/images/icons/jetbrains-academy.svg" sizes="32x32" />

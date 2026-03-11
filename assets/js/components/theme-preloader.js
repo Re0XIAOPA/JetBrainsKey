@@ -4,7 +4,23 @@ const savedTheme = localStorage.getItem('theme');
 // 检查系统主题偏好
 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-// 如果有保存的主题设置，使用保存的设置；否则，根据系统主题偏好设置
-if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    document.documentElement.classList.add('dark-theme');
+// 应用主题
+function applyTheme() {
+    if (savedTheme === 'dark' || (savedTheme === 'auto' && prefersDark) || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+    } else if (savedTheme === 'light' || (savedTheme === 'auto' && !prefersDark) || (!savedTheme && !prefersDark)) {
+        document.documentElement.classList.remove('dark-theme');
+    }
+}
+
+// 立即应用主题
+applyTheme();
+
+// 监听系统主题变化
+if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (savedTheme === 'auto') {
+            applyTheme();
+        }
+    });
 }
