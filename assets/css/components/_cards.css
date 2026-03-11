@@ -1,8 +1,7 @@
 /* 卡片容器样式 */
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 130px 20px 40px;
     max-width: 1600px;
@@ -14,7 +13,7 @@
     background-color: var(--card-background);
     border-radius: 12px;
     box-shadow: var(--card-shadow);
-    width: calc(25% - 15px);
+    width: 100%;
     min-width: 250px;
     max-width: 300px;
     padding: 0; /* 移除默认内边距，由内部容器控制 */
@@ -25,6 +24,7 @@
     flex-direction: column;
     flex-grow: 0;
     overflow: hidden; /* 确保圆角 */
+    margin: 0 auto;
 }
 
 .card:hover {
@@ -156,4 +156,37 @@
 
 .dark-theme .version-option:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 无密钥提示样式 */
+.no-key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    /* 保持原有密钥区域高度 */
+    margin: 0;
+    font-size: 1.1em;
+    color: #888;
+    background-color: #f0f0f5;
+    border-radius: 25px;
+}
+
+/* 暗色主题适配 */
+.dark-theme .no-key {
+    color: #aaa;
+    background-color: #333;
+}
+
+/* 搜索无结果提示 */
+.no-results {
+    text-align: center;
+    padding: 80px;
+    font-size: 1.2em;
+    color: #888;
+    grid-column: 1 / -1;
+}
+
+.dark-theme .no-results {
+    color: #aaa;
 }

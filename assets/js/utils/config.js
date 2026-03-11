@@ -34,6 +34,7 @@ const CONFIG = {
             copyKey: "复制密钥",
             copySuccess: "复制成功！",
             noKey: "暂无密钥",
+            noResults: "未找到相关结果",
             version: "版本",
             downloadInfo: {
                 jetbrains: "📥 下载 <a href='jetbraZip/files/jetbra-240701.zip' download>jetbrains.zip (240701)</a>，并按 readme.txt 说明进行配置！🚨 仅限测试目的，请勿用于商业用途！",
@@ -53,6 +54,7 @@ const CONFIG = {
             copyKey: "Copy License",
             copySuccess: "Copied!",
             noKey: "No Key Available",
+            noResults: "No results found",
             version: "Version",
             downloadInfo: {
                 jetbrains: "📥 Download <a href='jetbraZip/files/jetbra-240701.zip' download>jetbrains.zip (240701)</a>, and configure as described in readme.txt! 🚨 For testing purposes only, not for commercial use!",

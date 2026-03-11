@@ -48,33 +48,42 @@ export class LanguageManager {
 
     // 更新语言文本
     updateLanguageText() {
+        // 确保当前语言配置存在
+        const textConfig = CONFIG.text[this.currentLanguage] || CONFIG.text.zh;
+        
         // 更新免责声明
-        const footerDisclaimer = document.getElementById('footer').querySelector('.disclaimer');
+        const footerDisclaimer = document.getElementById('footer')?.querySelector('.disclaimer');
         if (footerDisclaimer) {
-            footerDisclaimer.textContent = CONFIG.text[this.currentLanguage].disclaimer;
+            footerDisclaimer.textContent = textConfig.disclaimer;
         }
 
         // 更新分类标签文本
         const categoryButtons = document.querySelectorAll('.category-btn');
         categoryButtons.forEach(button => {
             const category = button.dataset.category;
-            button.textContent = CONFIG.text[this.currentLanguage].categories[category];
+            button.textContent = textConfig.categories[category] || category;
         });
 
         // 更新卡片复制文本
         const copyKeyElements = document.querySelectorAll('.copy-key');
         copyKeyElements.forEach(element => {
-            element.textContent = CONFIG.text[this.currentLanguage].copyKey;
+            element.textContent = textConfig.copyKey;
         });
 
         // 更新下载提示文本
-        const downloadBannerElement = document.getElementById('download-banner').querySelector('.download-text');
+        const downloadBannerElement = document.getElementById('download-banner')?.querySelector('.download-text');
         if (downloadBannerElement && this.categorySwitcher) {
             const currentCategory = this.categorySwitcher.getCurrentCategory();
-            const infoText = CONFIG.text[this.currentLanguage].downloadInfo[currentCategory] ||
-                CONFIG.text[this.currentLanguage].downloadInfo.jetbrains;
+            const infoText = textConfig.downloadInfo[currentCategory] ||
+                textConfig.downloadInfo.jetbrains;
             downloadBannerElement.innerHTML = infoText;
         }
+        
+        // 更新搜索无结果提示
+        const noResultsElements = document.querySelectorAll('.no-results');
+        noResultsElements.forEach(element => {
+            element.textContent = textConfig.noResults;
+        });
     }
 
     // 获取当前语言

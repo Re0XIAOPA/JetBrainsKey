@@ -58,7 +58,7 @@
 /* 底部下载提示 */
 .download-banner {
     position: fixed;
-    bottom: 63px;
+    bottom: 105px;
     left: 50%;
     transform: translateX(-50%);
     width: auto;

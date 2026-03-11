@@ -53,6 +53,7 @@ export class CardRenderer {
             // 设置卡片HTML
             const isValid = isKeyValid(currentKey);
             const currentLanguage = this.languageManager.getCurrentLanguage();
+            const textConfig = CONFIG.text[currentLanguage] || CONFIG.text.zh;
             card.innerHTML = `
                 <div class="card-top-section">
                     <div class="version-selector">
@@ -70,9 +71,9 @@ export class CardRenderer {
                         <div class="card-title" title="${software.name}">${software.name}</div>
                         <div class="key-display">
                             ${!isValid
-                            ? `<div class="no-key">${CONFIG.text[currentLanguage].noKey}</div>`
+                            ? `<div class="no-key">${textConfig.noKey}</div>`
                             : `${'*'.repeat(35)}<br>${'*'.repeat(35)}<br>${'*'.repeat(35)}`}
-                            ${isValid ? `<div class="copy-key">${CONFIG.text[currentLanguage].copyKey}</div>` : ''}
+                            ${isValid ? `<div class="copy-key">${textConfig.copyKey}</div>` : ''}
                         </div>
                     </div>
                 </div>
@@ -142,11 +143,12 @@ export class CardRenderer {
 
                     const isValid = isKeyValid(realKey);
                     // 更新密钥显示
+                    const textConfig = CONFIG.text[currentLanguage] || CONFIG.text.zh;
                     keyDisplay.innerHTML = `
                         ${!isValid
-                            ? `<div class="no-key">${CONFIG.text[currentLanguage].noKey}</div>`
+                            ? `<div class="no-key">${textConfig.noKey}</div>`
                             : `${'*'.repeat(35)}<br>${'*'.repeat(35)}<br>${'*'.repeat(35)}`}
-                        ${isValid ? `<div class="copy-key">${CONFIG.text[currentLanguage].copyKey}</div>` : ''}
+                        ${isValid ? `<div class="copy-key">${textConfig.copyKey}</div>` : ''}
                     `;
 
                     // 重新绑定点击事件

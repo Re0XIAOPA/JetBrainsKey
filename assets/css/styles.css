@@ -19,3 +19,8 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
 }
+
+/* 确保页脚始终在底部 */
+#card-container {
+    padding-bottom: 100px;
+}

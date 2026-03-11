@@ -27,11 +27,30 @@
     <!-- 固定导航栏 -->
     <header class="navbar">
         <div class="navbar-content">
+            <div class="navbar-left">
+                <div class="logo">
+                    <img src="/assets/images/icons/jetbrains-academy.svg" alt="Logo" class="logo-image">
+                    <span class="logo-text">JetBrainsKey</span>
+                </div>
+            </div>
+            
             <div class="category-tabs">
                 <button class="category-btn active" data-category="jetbrains">Jetbrains</button>
                 <button class="category-btn" data-category="plugins">插件</button>
                 <button class="category-btn" data-category="jetbrains2099">2099</button>
                 <!-- 添加更多分类 -->
+            </div>
+            
+            <div class="navbar-right">
+                <div class="search-container">
+                    <div class="search-button">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input type="text" class="search-input" placeholder="搜索...">
+                    <div class="clear-button" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
